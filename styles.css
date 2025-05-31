@@ -135,7 +135,9 @@ img {
 
 .nav__menu {
     display: flex;
+    justify-content: center;
     gap: 2rem;
+    flex-grow: 1;
 }
 
 .nav__link {
@@ -143,13 +145,15 @@ img {
     transition: var(--transition);
     position: relative;
     padding: 0.5rem 0;
+    text-align: center;
 }
 
 .nav__link::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
     height: 3px;
     background: var(--secondary-color);
@@ -158,6 +162,13 @@ img {
 
 .nav__link:hover::after {
     width: 100%;
+}
+
+.nav__toggle {
+    display: none;
+    font-size: 2rem;
+    color: var(--primary-color);
+    cursor: pointer;
 }
 
 /* Home Section */
@@ -176,6 +187,7 @@ img {
 }
 
 .home__data {
+    padding-top: 20px;
     padding-right: 2rem;
 }
 
@@ -529,6 +541,37 @@ img {
 @media (max-width: 768px) {
     .nav__menu {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav__menu.show {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav__toggle {
+        display: block;
+    }
+
+    .nav__link {
+        padding: 0.5rem 1rem;
+        display: block;
+        text-align: center;
+    }
+
+    .nav__link::after {
+        display: none;
     }
 
     .section {
@@ -559,6 +602,7 @@ img {
     }
 
     .home__name {
+        padding-top: 30px;
         font-size: 2rem;
     }
 

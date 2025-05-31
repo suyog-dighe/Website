@@ -20,6 +20,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 top: target.offsetTop - 70,
                 behavior: 'smooth'
             });
+            // Close the menu on mobile after clicking a link
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.remove('show');
         }
     });
 });
@@ -46,4 +49,12 @@ window.addEventListener('scroll', function() {
             link.classList.add('active');
         }
     });
+});
+
+// Toggle menu on mobile
+const navToggle = document.getElementById('nav-toggle');
+const navMenu = document.getElementById('nav-menu');
+
+navToggle.addEventListener('click', function() {
+    navMenu.classList.toggle('show');
 });
